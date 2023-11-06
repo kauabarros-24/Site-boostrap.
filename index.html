@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notícias de Astronomia</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f0f0f0;
+        }
+        .container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Notícias de Astronomia</h1>
+        <div class="text-center my-3">
+            <button id="modoNoturno" class="btn btn-primary">Modo Noturno</button>
+        </div>
+        <div id="noticias">
+        </div>
+    </div>
+
+    <script>
+        const noticias = [
+            { titulo: "Descoberta de um novo planeta", conteudo: "Os astrônomos anunciaram a descoberta de um novo planeta na órbita de uma estrela distante." },
+            { titulo: "Chuva de meteoros prevista para esta semana", conteudo: "Uma chuva de meteoros espetacular será visível nos próximos dias." },
+            { titulo: "Lançamento do novo telescópio espacial", conteudo: "A NASA lançará em breve um novo telescópio espacial para explorar o cosmos." }
+        ];
+        function exibirNoticias() {
+            const noticiasContainer = document.getElementById("noticias");
+
+            for (const noticia of noticias) {
+                const noticiaCard = document.createElement("div");
+                noticiaCard.classList.add("card", "my-3");
+
+                const cardBody = document.createElement("div");
+                cardBody.classList.add("card-body");
+
+                const cardTitle = document.createElement("h5");
+                cardTitle.classList.add("card-title");
+                cardTitle.textContent = noticia.titulo;
+
+                const cardText = document.createElement("p");
+                cardText.classList.add("card-text");
+                cardText.textContent = noticia.conteudo;
+
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardText);
+                noticiaCard.appendChild(cardBody);
+                noticiasContainer.appendChild(noticiaCard);
+            }
+        }
+        const modoNoturnoButton = document.getElementById("modoNoturno");
+        modoNoturnoButton.addEventListener("click", () => {
+            document.body.classList.toggle("bg-dark");
+            document.body.classList.toggle("text-light");
+        });
+        exibirNoticias();
+    </script>
+</body>
+</html>
